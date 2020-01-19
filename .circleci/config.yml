@@ -11,5 +11,7 @@ jobs:
             - run:
                 command: |
                     pytest
+            - store_test_results:
+                path: test-results
 
         
