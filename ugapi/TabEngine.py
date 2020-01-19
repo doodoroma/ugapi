@@ -1,4 +1,4 @@
-import scrapy
+import logging
 from scrapy.crawler import CrawlerProcess
 from .TabSpider import TabSpider
 from .TabPipeline import TabPipeline
@@ -9,14 +9,16 @@ class TabEngine():
     base_url = 'https://www.ultimate-guitar.com/'
 
     def __init__(self):
+        self.log = logging.getLogger(__name__)
         super().__init__()
 
-    def process(self, title):
+    def process(self, title, **kwargs):
         return self._process(
-            self._construct_url(title=title)
+            self._construct_url(title=title),
+            **kwargs
         )
 
-    def _process(self, url):
+    def _process(self, url, save_to=None):
         process = CrawlerProcess({
             'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
             'ITEM_PIPELINES': {
@@ -27,7 +29,10 @@ class TabEngine():
             url
         ])
         process.start()
-        # process.join()
+        if save_to is not None:
+            self.log.info(f'Data will be saved to {save_to}')
+            TabPipeline.tabs.to_csv(save_to)
+
         return TabPipeline.tabs
 
     @property
