@@ -14,9 +14,6 @@ jobs:
             - store_test_results:
                 path: test-results
             - run:
-                command: |
-                    python setup.py verify
-            - run:
                 name: init .pypirc
                 command: |
                     echo -e "[pypi]" >> ~/.pypirc
