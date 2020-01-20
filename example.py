@@ -1,3 +1,4 @@
 import ugapi
 
-ugapi.get_from_search("dream theater", save_to='tabs.csv')
+tabs = ugapi.get_from_search("dream theater", save_to='tabs.csv')
+print(tabs.head())
