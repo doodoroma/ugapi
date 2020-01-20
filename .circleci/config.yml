@@ -23,7 +23,7 @@ jobs:
                 name: create packages
                 command: |
                     python setup.py sdist
-                    pip install twine
+                    sudo pip install twine
                     twine upload dist/*
 
         
