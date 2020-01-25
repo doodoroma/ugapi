@@ -12,9 +12,9 @@ class TabEngine():
         self.log = logging.getLogger(__name__)
         super().__init__()
 
-    def process(self, title, **kwargs):
+    def process(self, title, tab_type=TabType.ALL, **kwargs):
         return self._process(
-            self._construct_url(title=title),
+            self._construct_url(title=title, tab_type=tab_type),
             **kwargs
         )
 
