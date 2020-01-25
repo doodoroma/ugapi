@@ -7,6 +7,6 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
+      - uses: actions/checkout@v2
       - name: Hello world
         run: ls -la
