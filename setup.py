@@ -19,7 +19,7 @@ def find_version(*file_paths):
 
 setup(
     name='ugapi',
-    version=find_version("package", "__init__.py")
+    version=find_version("package", "__init__.py"),
     description='Ultimate-Guitar Tab API',
     url='http://github.com/doodoroma/ugapi',
     author='Adam Meszaros',
