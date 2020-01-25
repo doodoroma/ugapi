@@ -1,10 +1,11 @@
+import os
 from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
 
 
 def read(*parts):
-    with codecs.open(os.path.join(here, *parts), 'r') as fp:
+    with open(os.path.join(here, *parts), 'r') as fp:
         return fp.read()
 
 
@@ -19,7 +20,7 @@ def find_version(*file_paths):
 
 setup(
     name='ugapi',
-    version=find_version("package", "__init__.py"),
+    version=find_version("ugapi", "__init__.py"),
     description='Ultimate-Guitar Tab API',
     url='http://github.com/doodoroma/ugapi',
     author='Adam Meszaros',
