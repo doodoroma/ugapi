@@ -11,4 +11,3 @@ class TabPipeline(object):
         TabPipeline.tabs = TabPipeline.tabs.append(pd.DataFrame(
             item['data']['store']['page']['data']['results']
         ))
-        # return item

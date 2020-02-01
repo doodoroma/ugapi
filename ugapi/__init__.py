@@ -1,6 +1,6 @@
 from .TabEngine import tab_engine
 
-__version__ = "v0.1.1"
+__version__ = "v0.1.2"
 
 
 def get_from_search(title, **kwargs):
