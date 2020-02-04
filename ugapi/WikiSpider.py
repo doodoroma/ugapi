@@ -1,9 +1,11 @@
 import json
 import scrapy
+import pandas as pd
 
 
 class WikiSpider(scrapy.Spider):
     name = "tabs"
+    album_name = None
 
     def parse(self, response):
         headers = (
@@ -29,7 +31,4 @@ class WikiSpider(scrapy.Spider):
             ] for row in content if len(row.xpath("td")) == len(headers)
         ]
 
-        yield {
-            'content': c,
-            'headers': headers
-        }
+        pd.DataFrame(c, columns=headers).to_csv(f'{self.album_name}.csv')

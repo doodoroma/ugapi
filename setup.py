@@ -27,7 +27,7 @@ setup(
     author='Adam Meszaros',
     author_email='doodoroma@gmail.com',
     license='MIT',
-    packages=['ugapi', 'ugapi.wiki'],
+    packages=['ugapi'],
     install_requires=[
         'scrapy',
         'pandas'
