@@ -1,12 +1,20 @@
 import os
+import re
 import ugapi
 
 
 def test_wiki_search():
-    ugapi.get_songs("When Dream and Day Unite")
-    ugapi.get_songs("Awake")
-    os.path.exists("When Dream and Day Unite.csv")
-    os.path.exists("Awake.csv")
+    albums = [
+        "When Dream and Day Unite",
+        "Awake"
+    ]
+    for album in albums:
+        ugapi.get_songs(album)
+
+    for album in albums:
+        album_path = f"{re.sub('[^A-Za-z0-9]+', '_', album)}.csv"
+        assert os.path.exists(album_path), "Export didn't work"
+        os.remove(album_path)
 
 
 # def test_wiki_should_find_albums():

@@ -1,13 +1,16 @@
 import logging
 import wikipedia
+import pandas as pd
 from twisted.internet import reactor
 import scrapy
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.log import configure_logging
 from ugapi.WikiSpider import WikiSpider
-from multiprocessing.context import Process
 
-__version__ = "v0.1.4"
+from multiprocessing import Process, Manager
+from multiprocessing.managers import BaseManager
+
+__version__ = "v0.1.6"
 
 
 def _construct_url(title):
@@ -16,8 +19,9 @@ def _construct_url(title):
 
 
 def _get_songs(album, **kwargs):
-    crawler = CrawlerProcess()
+    crawler = CrawlerProcess(settings={'LOG_ENABLED': False})
     WikiSpider.album_name = album
+
     crawler.crawl(WikiSpider, start_urls=[
         _construct_url(album)
     ])
